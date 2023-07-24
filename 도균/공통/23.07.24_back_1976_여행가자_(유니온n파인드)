@@ -1,0 +1,41 @@
+# https://www.acmicpc.net/problem/1976
+
+## 00. input
+len_city = int(input())
+len_plan = int(input())
+parents = [i for i in range(len_city)]
+row = col = len_city
+
+## 01. Union and Find
+def find(x):
+    if x != parents[x]:
+        parents[x] = find(parents[x])
+    return parents[x]
+
+def union(x, y):
+    x = find(x)
+    y = find(y)
+    if x < y:
+        parents[y] = x
+    else:
+        parents[x] = y
+
+## 02. make unions
+board = []
+for r in range(row):
+    board.append(list(map(int, input().split())))
+    for c in range(col):
+        if board[r][c] == 1:
+            union(r, c)
+
+## 03. check unions
+plan = list(map(int, input().split()))
+start = parents[plan[0] - 1]
+is_okay = "YES"
+for city in plan[1:]:
+    if parents[city - 1] != start:
+        is_okay = "NO"
+        break
+
+## 04. Print
+print(is_okay)
