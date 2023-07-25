@@ -22,15 +22,14 @@ parent = [num for num in range(N)]
 for i in range(N):
     temp = list(map(int, input().split()))
     for j in range(N):
-        if i <= j or temp[j] == 0: 
-            continue
-        union(parent, i, j)
+        if temp[j] == 1:
+            union(parent, i, j)
 
 plan = list(map(int, input().split()))
 root = find(parent, plan[0]-1)
 
 for city in plan[1:]:
-    if root != find(parent, city-1):
+    if find(parent, city-1) != root:
         print("NO")
         break
 
