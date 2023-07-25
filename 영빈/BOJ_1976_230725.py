@@ -1,12 +1,12 @@
 # 여행 가자 gold 4
 # https://www.acmicpc.net/problem/1976
-# 23-07-25 
-# 
+# 23-07-25  unionfind    31256 KB	56 ms
+
 
 def solution():
     N = int(input())
     M = int(input())
-    parents = [i for i in range(N+1)]
+    parents = [i for i in range(N + 1)]
 
     def find(a):
         if parents[a] != a:
@@ -25,15 +25,17 @@ def solution():
         arr = list(map(int, input().split()))
         for j in range(N):
             if arr[j]:
-                union(i+1, j+1)
+                union(i + 1, j + 1)
     plan = set(map(int, input().split()))
-    regions = [set() for _ in range(N+1)]
-    for i in range(1,N+1):
-        regions[parents[i]].add(i)
-    for i in range(1,N+1):
-        if plan - regions[i] : continue
+    regions = [set() for _ in range(N + 1)]
+    for i in range(1, N + 1):
+        regions[find(i)].add(i)
+    for i in range(1, N + 1):
+        if plan - regions[i]:
+            continue
         print("YES")
         return
     print("NO")
+
 
 solution()
