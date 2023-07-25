@@ -1,0 +1,35 @@
+# https://www.acmicpc.net/problem/10282
+
+from collections import deque
+
+len_testcases = int(input())
+for _ in range(len_testcases):
+
+    ## 00. input
+    len_computers, len_dep, start = map(int, input().split())
+
+    dep = {}
+    for computer in range(len_computers + 1):
+        dep[computer] = dict()
+
+    for _ in range(len_dep):
+        a, b, cost = map(int, input().split())
+        dep[b][a] = cost
+
+    ## 01. heapq
+    Ended = []
+
+    qq = deque()
+    qq.append((start, 0, 1))
+    while qq:
+        now, cost, hacked = qq.popleft()
+        is_updated = False
+        for nex in dep[now]:
+            qq.append((nex, cost + dep[now][nex], hacked + 1))
+            is_updated = True
+
+        if not is_updated:
+            Ended.append((hacked, cost))
+
+    Ended.sort(reverse=True)
+    print(Ended[0][0], Ended[0][1])
