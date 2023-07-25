@@ -1,5 +1,5 @@
 
-""" 골드 5. 집합의 표현 """
+""" [백준] 골드 5. 집합의 표현 """
 
 import sys
 sys.setrecursionlimit(10**6)
