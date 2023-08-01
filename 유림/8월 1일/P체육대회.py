@@ -1,8 +1,6 @@
 
 """ [프로그래머스 PCCP 모의고사 #1] 체육대회 """
 
-# https://school.programmers.co.kr/learn/courses/15008/lessons/121684
-
 import itertools
 
 def solution(ability):
