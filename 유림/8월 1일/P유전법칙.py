@@ -1,7 +1,15 @@
 
 """ [프로그래머스 PCCP 모의고사 #1] 유전법칙 """
     
-def check(stack):
+def spread(generation, order):
+    stack = []
+
+    order -= 1
+    while generation > 1:
+        generation -= 1
+        stack.append(order % 4)
+        order //= 4
+
     while stack:
         number = stack.pop()
         if number == 0:
@@ -9,23 +17,14 @@ def check(stack):
         if number == 3:
             return "rr"
     return "Rr"
+    
 
 
 def solution(queries):
     answer = []
-    stack = []
 
     for generation, order in queries:    # 완두콩의 세대, 세대 내에서 개체 순서
-        
-        stack.clear()
-
-        order -= 1
-        while generation > 1:
-            generation -= 1
-            stack.append(order % 4)
-            order //= 4
-
-        answer.append(check(stack))
+        answer.append(spread(generation, order))
 
     return answer
 
