@@ -7,7 +7,7 @@ graph = []
 
 for _ in range(n):
     graph.append(list(map(int, input().split())))
-h,w,sr,sc,fr,fc = map(int, input().split())
+h, w, sr, sc, fr, fc = map(int, input().split())
 visited = [[False]*m for _ in range(n)]
 
 dr = [-1,1,0,0]
