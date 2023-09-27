@@ -21,7 +21,7 @@ def get_time_table(menu, order, k):
 
 def get_personnel(time_table):
     # 시간별 초기 데이터를 0명으로 설정
-    personnel = [0] * (time_table[-1][1] + 2)
+    personnel = [0] * (time_table[-1][1] + 1)
 
     # 누적합 배열 초기 설정
     for enter_time, exit_time in time_table:
