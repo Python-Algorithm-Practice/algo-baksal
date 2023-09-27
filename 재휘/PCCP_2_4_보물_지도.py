@@ -56,7 +56,7 @@ def solution(n, m, hole):
     from_end = get_min_dist_table(board, m - 1, n - 1)
 
     # 짬프했을 때 최단 거리 구하기
-    dr, dc = [-2, 2, 0, 0], [0, 0, -2, 2]  # 짬프는 두 칸
+    dr, dc = [2, 0], [0, 2]  # 짬프는 두 칸
     answer = n * m  # 초기값 최대루
 
     for r in range(m):
@@ -64,7 +64,7 @@ def solution(n, m, hole):
             if is_not_valid_point(board, r, c):
                 continue
 
-            for direc in range(4):
+            for direc in range(2):
                 next_r = r + dr[direc]
                 next_c = c + dc[direc]
 
